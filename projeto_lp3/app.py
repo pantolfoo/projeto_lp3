@@ -2,7 +2,7 @@
 # Não precisa editar o código para editar o conteúdo da página
 
 # importa a classe Flask do modulo flask
-from flask import Flask
+from flask import Flask, render_template
 # flask: modulo
 # Flask: classe
 
@@ -22,22 +22,27 @@ app = Flask('minha aplicação')
 @app.route("/")
 def home():
     home_retorno = "<h1> Home page </h1>"
-    return home_retorno
+    return render_template("home.html") 
 
 # /contato 
-@app.route("/contato")
+@app.route("/contatos")
 def contatos():
     contatos_retorno = "<h1> Contatos </h1>"
-    return contatos_retorno
+    return render_template("contatos.html") 
 
 # /produtos 
 @app.route("/produtos")
 def produtos():
-    produtos_retorno = "<h1> Produtos </h1>"
-    return produtos_retorno
+    lista_produtos = [
+        {"nome": "Mais esperto que o diabo", "genero": "autoajuda"},
+        {"nome": "É assim que acaba", "genero": "Romance"},
+        {"nome": "Código limpo", "genero": "Informática linguagens"},
+    ]
+
+    return render_template("produtos.html", produtos=lista_produtos) 
 
 
-# /cpf (devolver um cpf aleatório)
+'''# /cpf (devolver um cpf aleatório)
 @app.route("/cpf")
 def gerar_cpf():
     cpf = CPF ()
@@ -53,6 +58,7 @@ def gerar_cnpj():
     cnpj_retorno = "<h1>CNPJ Gerado:</h1>"
     cnpj_retorno += cnpj.generate((True))
     return cnpj_retorno
+'''
 
 
 # /servicos (devolver um titulo com "Nossos serviços")
