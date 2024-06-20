@@ -24,10 +24,10 @@ poetry shell
 
 ctrl + shift + P
 
-selecionar interpretador do Python
+select interpreter 
 
 poetry install
- -> instalar as dependencias do ambiente virtual e trazer para a maquina
+
 
 
 Para rodar:
