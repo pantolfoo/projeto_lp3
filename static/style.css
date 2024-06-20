@@ -14,3 +14,7 @@ h1{
 h2{
     color: #C738BD
 }
+
+.rodape{
+    justify-content: space-around;
+}

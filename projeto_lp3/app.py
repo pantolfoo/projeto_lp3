@@ -27,7 +27,6 @@ def home():
 # /contato 
 @app.route("/contatos")
 def contatos():
-    contatos_retorno = "<h1> Contatos </h1>"
     return render_template("contatos.html") 
 
 # /produtos 
@@ -42,23 +41,21 @@ def produtos():
     return render_template("produtos.html", produtos=lista_produtos) 
 
 
-'''# /cpf (devolver um cpf aleatório)
+# /cpf (devolver um cpf aleatório)
 @app.route("/cpf")
 def gerar_cpf():
     cpf = CPF ()
-    cpf_retorno = "<h1>CPF Gerado:</h1>"
-    cpf_retorno += cpf.generate((True))
-    return cpf_retorno
+    cpf_retorno = cpf.generate((True))
+    return render_template("cpf.html", cpf = cpf_retorno)
 
 
 # /cnpj (devolver um cnpj aleatório)
 @app.route("/cnpj")
 def gerar_cnpj():
     cnpj = CNPJ ()
-    cnpj_retorno = "<h1>CNPJ Gerado:</h1>"
-    cnpj_retorno += cnpj.generate((True))
-    return cnpj_retorno
-'''
+    cnpj_retorno = cnpj.generate((True))
+    return render_template("cnpj.html", cnpj = cnpj_retorno)
+
 
 
 # /servicos (devolver um titulo com "Nossos serviços")
@@ -67,5 +64,18 @@ def servicos():
     servicos_retorno = "<h1> Nossos serviços </h1>"
     return servicos_retorno
 
-app.run()
+@app.route("/politicas")
+def politicas_privacidade():
+    return render_template("politicas.html")
+
+@app.route("/termos")
+def termos_de_uso():
+    return render_template("termos.html")
+
+@app.route("/utilizar")
+def como_utilizar():
+    return render_template("utilizar.html")
+
+
+app.run(debug=True)
 
