@@ -1,0 +1,36 @@
+git config --global user.name "Isabella"
+
+git config --global user.email "isabellapantolfo1101@gmail.com"
+
+curl -sSL https://install.python-poetry.org | python3 -
+
+export PATH="/home/estudante1/.local/bin:$PATH" 
+
+poetry --version
+
+git clone https://github.com/pantolfoo/projeto_lp3.git
+
+code projeto_lp3/
+
+
+
+verificar se têm extensão do python
+
+
+
+no terminal do python: 
+
+poetry shell
+
+ctrl + shift + P
+
+selecionar interpretador do Python
+
+poetry install
+ -> instalar as dependencias do ambiente virtual e trazer para a maquina
+
+
+Para rodar:
+
+nome_da_aplicacao.run( )
+app.run( ) 
