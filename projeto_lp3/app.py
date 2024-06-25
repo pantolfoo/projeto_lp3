@@ -2,7 +2,7 @@
 # Não precisa editar o código para editar o conteúdo da página
 
 # importa a classe Flask do modulo flask
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 # flask: modulo
 # Flask: classe
 
@@ -19,6 +19,14 @@ app = Flask('minha aplicação')
 # app = Flask
 
 # /
+
+lista_produtos = [
+        {"nome": "Mais esperto que o diabo", "genero": "autoajuda"},
+        {"nome": "É assim que acaba", "genero": "Romance"},
+        {"nome": "Código limpo", "genero": "Informática linguagens"},
+]
+
+
 @app.route("/")
 def home():
     home_retorno = "<h1> Home page </h1>"
@@ -76,6 +84,14 @@ def termos_de_uso():
 def como_utilizar():
     return render_template("utilizar.html")
 
+@app.route("/produtos/cadastro")
+def cadastro_produto():
+    return render_template("cadastro_produto.html")
 
-app.run(debug=True)
-
+@app.route("/produtos/cadastro", methods=['POST'])
+def salvar_produtos():
+    nome = request.form  ['nome']#dicionario imnutavel
+    descricao = request.form  ['descricao']
+    produto = { "nome": nome, "descricao": descricao}
+    lista_produtos.append(produto)
+    return render_template("produtos.html", produtos=lista_produtos) 
